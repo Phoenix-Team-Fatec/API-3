@@ -23,6 +23,7 @@ export default class UserController {
       // Instancia o objeto Admin para usar o método listarUsuario
       const admin = new Admin("", "", "", false);
       const usuarios = await admin.listarUsuario();
+      res.status(201).json(usuarios); 
 
       if (true) {
         res.status(200).json(usuarios);
@@ -48,6 +49,24 @@ export default class UserController {
       console.log("Erro ao deletar usuário:", err);
       res.status(500).json({ error: "Erro ao deletar usuário "})
     }
+  }
+
+
+  //Método assíncrono para atualizar usuário
+  public async updateUSer(req: Request, res: Response){
+
+      const {id} = req.params;
+      const{nome, email,senha} = req.body;
+      try{
+        const admin = new Admin("admin", "admin@example", "admin", true);
+         await admin.atualizarUsuario(Number(id),nome, email, senha)
+
+      }catch(err){
+        console.log("Erro ao deletar usuário:", err);
+        res.status(500).json({ error: "Erro ao deletar usuário "})
+
+      }
+
   }
 }
 

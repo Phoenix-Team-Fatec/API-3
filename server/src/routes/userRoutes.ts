@@ -1,8 +1,11 @@
 import { Router } from "express";
 import UserController from "../controllers/userController";
 
+
 const router = Router();
 const userController = new UserController();
+
+
 
 router.get("/", (req, res) => {
   res.send("Servidores rodando");
@@ -19,5 +22,8 @@ router.get("/users", (req, res) => {
 router.delete("/users/:id", (req, res) => {
   userController.deletarUsuario(req, res);
 })
+
+
+router.put("/users/:id", (req, res) => userController.updateUSer(req, res));
   
 export default router;

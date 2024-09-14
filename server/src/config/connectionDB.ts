@@ -2,17 +2,17 @@ import { Pool } from "pg";  // Pool é usada para gerenciar um pool de conexões
 import dotenv from "dotenv";
 
 // Carrega as variáveis de ambiente
-dotenv.config({ path: "server/src/config/.env" });
+dotenv.config({path:".env"});
 
 export default class ConnectionDB {
     private pool: Pool;
 
     constructor() {
         this.pool = new Pool({
-            user: 'postgres',
-            host: 'localhost',
-            database: 'oak',
-            password: '1234',
+            user: "postgres",
+            host: "localhost",
+            database: "oak",
+            password: "1234",
             port: 5432,
         });
         
